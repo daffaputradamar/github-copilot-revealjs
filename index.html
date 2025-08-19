@@ -1,40 +1,318 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+	<title>Introducing GitHub Copilot — Elevate Your Dev Experience</title>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/dracula.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
+
+	<style>
+		/* Presentation polish */
+		:root {
+			--brand: #a184ec;
+			/* accent */
+			--brand-2: #a6d7eb;
+			/* secondary accent */
+		}
+
+		.reveal h1,
+		.reveal h2,
+		.reveal h3 {
+			letter-spacing: .02em;
+		}
+
+		.reveal .gradient-text {
+			background: linear-gradient(135deg, var(--brand), var(--brand-2));
+			background-clip: text;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+
+		.reveal .accent {
+			color: var(--brand);
+		}
+
+		.reveal .accent2 {
+			color: var(--brand-2);
+		}
+
+		.reveal .footnote {
+			font-size: .6em;
+			opacity: .7;
+		}
+
+		.reveal .r-stack>* {
+			margin: .25em 0;
+		}
+
+		.reveal section pre {
+			font-size: .9rem;
+		}
+
+		.reveal code {
+			line-height: 1.5;
+		}
+
+		.reveal .columns {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 2rem;
+			align-items: start;
+		}
+
+		.reveal .pill {
+			display: inline-block;
+			padding: .25em .6em;
+			border-radius: 999px;
+			background: rgba(255, 255, 255, .08);
+			border: 1px solid rgba(255, 255, 255, .12);
+		}
+
+		.reveal .badge {
+			font-size: .6em;
+			opacity: .8;
+		}
+
+		.reveal .callout {
+			border-left: 4px solid var(--brand);
+			padding-left: 1rem;
+		}
+
+		.reveal .card {
+			background: rgba(0, 0, 0, .25);
+			border: 1px solid rgba(255, 255, 255, .08);
+			border-radius: 12px;
+			padding: 1rem 1.2rem;
+		}
+
+		.reveal table {
+			width: 100%;
+			font-size: .9em;
+		}
+
+		.reveal table th,
+		.reveal table td {
+			padding: .4em .6em;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<!-- Title -->
+			<section data-background-color="#1e1f22" data-transition="fade">
+				<h1>GitHub <span class="gradient-text">Copilot</span></h1>
+				<h3 class="gradient-text">Elevate your developer experience</h3>
+				<p class="badge pill">Pair-programming with AI • IDE-native • Context-aware</p>
+				<aside class="notes">Set the tone: this is practical, demo-driven, and opinionated.</aside>
+			</section>
+
+			<!-- Agenda with fragments -->
+			<section data-background="examples/assets/image1.png" data-background-opacity=".07">
+				<h2>Agenda</h2>
+				<ul>
+					<li class="fragment">What is Copilot?</li>
+					<li class="fragment">Where it fits in the dev workflow</li>
+					<li class="fragment">Live prompts and code</li>
+					<li class="fragment">Best practices & guardrails</li>
+					<li class="fragment">Q&A</li>
+				</ul>
+			</section>
+
+			<!-- What is Copilot -->
+			<section>
+				<h2>What is <span class="accent">Copilot</span>?</h2>
+				<div class="columns">
+					<div class="card">
+						<ul>
+							<li class="fragment">AI pair programmer in your IDE</li>
+							<li class="fragment">Autocompletes code, tests, docs</li>
+							<li class="fragment">Understands file + project context</li>
+							<li class="fragment">Works with many languages</li>
+						</ul>
+					</div>
+					<div>
+						<p class="callout">“Start with intent, iterate with suggestions.”</p>
+						<p class="footnote">Tips: write clear comments, small steps, validate quickly.</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Workflow -->
+			<section data-background="examples/assets/image2.png" data-background-opacity=".07">
+				<h2>Where it fits</h2>
+				<ol>
+					<li class="fragment">Scaffolding code & APIs</li>
+					<li class="fragment">Tests & fixtures</li>
+					<li class="fragment">Docs & comments</li>
+					<li class="fragment">Refactors & patterns</li>
+				</ol>
+			</section>
+
+			<section data-auto-animate>
+					<!-- Auto-animate demo: from prompt to code -->
+					<section data-auto-animate>
+						<h2 data-id="demo1-title">From prompt ➜ code</h2>
+						<pre data-id="demo1" data-line-numbers><code class="language-csharp">
+		// Create a Web API controller for Products
+		// CRUD endpoints using ASP.NET Core minimal APIs
+		// Use in-memory repo for demo
+						</code></pre>
+						<p class="footnote">Type this in your IDE and accept the suggestion.</p>
+					</section>
+					<section data-auto-animate>
+						<h2 data-id="demo1-title">From prompt ➜ code</h2>
+						<pre data-id="demo1" data-line-numbers><code class="language-csharp">
+		app.MapGroup("/api/products")
+		.MapProductsApi(new InMemoryProductRepository());
+		
+		// Generated with Copilot from the prompt
+		public static class ProductApi
+		{
+			public static RouteGroupBuilder MapProductsApi(this RouteGroupBuilder group, IProductRepository repo)
+			{
+				group.MapGet("/", () => repo.GetAll());
+				group.MapGet("/{id}", (int id) => repo.Get(id) is { } p ? Results.Ok(p) : Results.NotFound());
+				group.MapPost("/", (Product p) => Results.Created($"/api/products/{p.Id}", repo.Add(p)));
+				group.MapPut("/{id}", (int id, Product p) => repo.Update(id, p) ? Results.NoContent() : Results.NotFound());
+				group.MapDelete("/{id}", (int id) => repo.Delete(id) ? Results.NoContent() : Results.NotFound());
+				return group;
+			}
+		}
+						</code></pre>
+						<aside class="notes">Explain how small, specific prompts yield higher-quality results.</aside>
+					</section>
+			</section>
+
+			<!-- EF Core prompt -->
+			<section>
+				<h3>Demo: EF Core query</h3>
+				<pre data-line-numbers><code class="language-csharp" data-trim>
+// Write LINQ to get top 5 customers by total purchase
+var top = await context.Orders
+	.GroupBy(o => o.CustomerId)
+	.Select(g => new { CustomerId = g.Key, Total = g.Sum(o => o.Total) })
+	.OrderByDescending(x => x.Total)
+	.Take(5)
+	.ToListAsync();
+				</code></pre>
+				<p class="footnote">Prompt: “Write LINQ to ...” ➜ Copilot completes query.</p>
+			</section>
+
+			<!-- Live prompts -->
+			<section>
+				<h3>💻 Live prompts</h3>
+				<p>Type these in the IDE, accept or refine suggestions:</p>
+				<pre data-line-numbers><code class="language-csharp" data-trim>
+// Create a method to calculate factorial
+
+// Implement a repository pattern for Product entity
+
+// Write async method to fetch data using HttpClient
+
+// Generate unit test for OrderService with mock repository
+				</code></pre>
+			</section>
+
+			<!-- Agent mode intro -->
+			<section>
+				<h2>Copilot <span class="accent">Agent mode</span></h2>
+				<ul>
+					<li class="fragment">Task-focused assistant inside your editor</li>
+					<li class="fragment">Plans steps, edits multiple files, runs tasks/tests</li>
+					<li class="fragment">Grounded in your workspace context</li>
+					<li class="fragment">You stay in control: review, approve, iterate</li>
+				</ul>
+			</section>
+
+			<!-- Agent mode example (auto-animate) -->
+			<section data-auto-animate>
+				<h3 data-id="agent-title">Agent mode: example</h3>
+				<pre class="card" data-id="agent" data-line-numbers><code class="language-text" data-trim>
+Goal: Add a /health endpoint that returns build info and status
+Constraints: no new deps; unit tests required
+Steps: plan changes, update router, add tests, run tests, show diff
+				</code></pre>
+				<p class="footnote">Start with goal + constraints. Let the agent propose a plan.</p>
+			</section>
+			<section data-auto-animate>
+				<h3 data-id="agent-title">Agent mode: example</h3>
+				<pre data-id="agent" data-line-numbers><code class="language-text" data-trim>
+Agent plan:
+1) Create HealthController with GET /health
+2) Read package.json for version; return { status, version }
+3) Add tests for 200 OK and schema
+4) Wire route in server/index.ts
+5) Run tests and report results
+				</code></pre>
+				<p class="footnote">Approve steps, watch edits and tests, then review the diff.</p>
+			</section>
+
+			<!-- Agent prompting tips -->
+			<section>
+				<h3>Better agent prompts</h3>
+				<ul>
+					<li class="fragment"><b>Goal</b> + <b>constraints</b> + <b>acceptance criteria</b></li>
+					<li class="fragment">Point to files/folders when possible</li>
+					<li class="fragment">Prefer small scopes; iterate quickly</li>
+					<li class="fragment">Ask the agent to show diffs and test results</li>
+				</ul>
+			</section>
+
+			<!-- Best practices -->
+			<section>
+				<h2>Best practices</h2>
+				<ul>
+					<li class="fragment">Treat Copilot like a <b>junior dev</b>—review everything</li>
+					<li class="fragment">Prompt clearly, deliver in <b>small steps</b></li>
+					<li class="fragment">Run tests; add types & contracts</li>
+					<li class="fragment">Mind secrets, licenses, and security</li>
+				</ul>
+			</section>
+
+			<!-- Wrap-up -->
+			<section data-transition="fade">
+				<h2>Wrap-up <span class="accent2">🎉</span></h2>
+				<p>“If ChatGPT helps you think, Copilot helps you code.”</p>
+				<p>Focus on <b>logic & design</b>, not boilerplate.</p>
+				<p class="pill">Try GitHub Copilot in your next project.</p>
+				<aside class="notes">Invite Q&A and discuss team policies.</aside>
+			</section>
 		</div>
+	</div>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script src="plugin/zoom/zoom.js"></script>
+	<script src="plugin/search/search.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			slideNumber: 'c/t',
+			controls: true,
+			progress: true,
+			navigationMode: 'default',
+			transition: 'slide',
+			backgroundTransition: 'fade',
+			autoAnimateDuration: 0.6,
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealSearch]
+		});
+	</script>
+</body>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
 </html>
