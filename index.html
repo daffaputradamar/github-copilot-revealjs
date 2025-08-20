@@ -120,7 +120,7 @@
 			<section data-background="examples/assets/image1.png" data-background-opacity=".07">
 				<h2>Agenda</h2>
 				<ul>
-					<li class="fragment">What is Copilot (2025)</li>
+					<li class="fragment">What is Copilot</li>
 					<li class="fragment">Where it fits in the dev workflow</li>
 					<li class="fragment">Agent mode (how it plans & edits)</li>
 					<li class="fragment">Live prompts and code</li>
@@ -131,7 +131,7 @@
 
 			<!-- What is Copilot (2025) -->
 			<section>
-				<h2>What is <span class="accent">Copilot</span> (2025)?</h2>
+				<h2>What is <span class="accent">Copilot</span>?</h2>
 				<div class="columns">
 					<div class="card">
 						<ul>
@@ -144,7 +144,6 @@
 					<div>
 						<p class="callout">Newer capabilities</p>
 						<ul>
-							<li class="fragment">Edits: apply structured changes from a request</li>
 							<li class="fragment">Agent mode: plans steps and edits multiple files</li>
 							<li class="fragment">Improved understanding of project context</li>
 						</ul>
@@ -250,18 +249,7 @@ Steps: plan changes, update router, add tests, run tests, show diff
 				</code></pre>
 				<p class="footnote">Start with goal + constraints. Let the agent propose a plan.</p>
 			</section>
-			<section data-auto-animate>
-				<h3 data-id="agent-title">Agent mode: example</h3>
-				<pre data-id="agent" data-line-numbers><code class="language-text" data-trim>
-Agent plan:
-1) Create HealthController with GET /health
-2) Read package.json for version; return { status, version }
-3) Add tests for 200 OK and schema
-4) Wire route in server/index.ts
-5) Run tests and report results
-				</code></pre>
-				<p class="footnote">Approve steps, watch edits and tests, then review the diff.</p>
-			</section>
+			
 
 			<!-- Agent prompting tips -->
 			<section>
@@ -270,7 +258,6 @@ Agent plan:
 					<li class="fragment"><b>Goal</b> + <b>constraints</b> + <b>acceptance criteria</b></li>
 					<li class="fragment">Point to files/folders when possible</li>
 					<li class="fragment">Prefer small scopes; iterate quickly</li>
-					<li class="fragment">Ask the agent to show diffs and test results</li>
 				</ul>
 			</section>
 
@@ -280,8 +267,6 @@ Agent plan:
 				<ul>
 					<li class="fragment">Treat Copilot like a <b>junior dev</b>—review everything</li>
 					<li class="fragment">Prompt clearly, deliver in <b>small steps</b></li>
-					<li class="fragment">Run tests; add types & contracts</li>
-					<li class="fragment">Mind secrets, licenses, and security</li>
 				</ul>
 			</section>
 
@@ -290,7 +275,7 @@ Agent plan:
 				<h2>Wrap-up <span class="accent2">🎉</span></h2>
 				<p>“If ChatGPT helps you think, Copilot helps you code.”</p>
 				<p>Focus on <b>logic & design</b>, not boilerplate.</p>
-				<p class="pill">Try GitHub Copilot in your next project.</p>
+				<p class="pill">Try GitHub Copilot in your project.</p>
 				<aside class="notes">Invite Q&A and discuss team policies.</aside>
 			</section>
 		</div>
